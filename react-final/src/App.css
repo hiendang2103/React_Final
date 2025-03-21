@@ -1,0 +1,1298 @@
+@import "tailwindcss";
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow: hidden;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.login-background {
+  position: relative;
+  overflow: hidden;
+  background-color: #000;
+  background-image: url("/sao_bang.gif");
+  background-size: cover;
+  background-position: center;
+  animation: slowZoom 30s infinite alternate;
+  width: 100vw;
+  max-width: 100%;
+}
+
+.login-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  z-index: -2;
+}
+
+.bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: -1;
+}
+
+@keyframes slowZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes glowStar {
+  0% {
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+  }
+}
+
+.login-container {
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(75, 71, 109, 0.5);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(139, 92, 246, 0.4);
+  animation: glowStar 3s infinite ease-in-out;
+  transform: perspective(1000px) rotateY(0deg);
+  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+.login-container:hover {
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(139, 92, 246, 0.6);
+  transform: perspective(1000px) rotateY(2deg) translateY(-5px);
+}
+
+form {
+  width: 100%;
+  max-width: 100%;
+}
+
+.ant-input {
+  border: 1px solid rgba(138, 75, 175, 0.4) !important;
+  width: 100% !important;
+  border-radius: 9999px !important;
+  padding: 0.625rem 1.25rem !important;
+  margin: 0.625rem 0 !important;
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  color: white !important;
+  font-size: 1rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.ant-input:focus {
+  border-color: rgba(168, 85, 247, 0.8) !important;
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.2) !important;
+}
+
+.ant-input::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.ant-input-suffix {
+  margin-right: 0.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: rgba(196, 181, 253, 0.8) !important;
+}
+
+.ant-input-affix-wrapper {
+  background-color: transparent !important;
+  border: 1px solid rgba(138, 75, 175, 0.4) !important;
+  border-radius: 9999px !important;
+  padding: 0 !important;
+}
+
+.ant-input-affix-wrapper input.ant-input {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+}
+
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused {
+  border-color: rgba(168, 85, 247, 0.8) !important;
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.2) !important;
+}
+
+.ant-input-affix-wrapper:hover {
+  border-color: rgba(168, 85, 247, 0.6) !important;
+}
+
+.custom-button {
+  background: linear-gradient(135deg, #9333ea, #6b21a8) !important;
+  border: none !important;
+  border-radius: 9999px !important;
+  margin: 0.75rem 0 !important;
+  padding: 0.75rem 0 !important;
+  width: calc(100% - 2rem) !important;
+  transition: all 0.3s ease !important;
+  font-size: 1.125rem !important;
+  font-weight: 600 !important;
+  height: auto !important;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.custom-button:hover {
+  background: linear-gradient(135deg, #a855f7, #7e22ce) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.6) !important;
+  width: calc(100% - 1rem) !important;
+}
+
+.custom-button::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(45deg);
+  transition: transform 0.6s;
+  opacity: 0;
+}
+
+.custom-button:hover::before {
+  transform: rotate(45deg) translate(50%, 50%);
+  opacity: 1;
+}
+
+.text-link {
+  color: #d8b4fe !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.05rem;
+  position: relative;
+  display: inline-block;
+}
+
+.text-link:hover {
+  color: #c4b5fd !important;
+  text-decoration: none;
+  text-shadow: 0 0 8px rgba(196, 181, 253, 0.6);
+}
+
+.text-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #c4b5fd;
+  transition: width 0.3s ease;
+}
+
+.text-link:hover::after {
+  width: 100%;
+}
+
+.logo {
+  height: 32px;
+  margin: 16px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
+}
+
+.site-layout {
+  background: #f5f7fa; /* Màu nền giống trong hình */
+}
+
+.ant-table-wrapper {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.ant-btn-primary {
+  background-color: #1890ff;
+  border-color: #1890ff;
+}
+
+/* Cải thiện thanh sidebar */
+.ant-layout-sider {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Làm tròn các góc của bảng */
+.ant-table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Cải thiện tiêu đề cột */
+.ant-table-thead > tr > th {
+  background-color: #f9fafb;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+/* Thanh trạng thái */
+.ant-tag {
+  border-radius: 12px;
+  padding: 2px 10px;
+  font-size: 12px;
+  border: none;
+}
+
+/* Cải thiện nút */
+.ant-btn-primary {
+  border-radius: 6px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Cải thiện input */
+.ant-input-affix-wrapper {
+  border-radius: 6px;
+  height: 38px;
+}
+
+/* Avatar for menu */
+.avatar-logo {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Hiệu ứng hover cho các dòng */
+.ant-table-tbody > tr:hover > td {
+  background-color: #f3f4f6 !important;
+}
+
+/* Pagination */
+.ant-pagination-item-active {
+  border-color: #3b82f6;
+}
+
+.ant-pagination-item-active a {
+  color: #3b82f6;
+}
+
+/* Thanh hành động */
+.action-button:hover {
+  background-color: #f3f4f6;
+  border-radius: 4px;
+}
+
+/* Menu item */
+.menu-item {
+  transition: all 0.2s;
+  border-radius: 6px;
+  margin: 0 8px;
+}
+
+.menu-item:hover {
+  background-color: #f3f4f6;
+}
+
+.menu-item.active {
+  background-color: #e0e7ff;
+  color: #4f46e5;
+}
+
+.menu-item.active svg {
+  color: #4f46e5;
+}
+
+/* Company logo styles */
+.company-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Action button styles */
+.action-button {
+  padding: 4px 8px;
+}
+
+/* Card hover effect */
+.card-hover:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+/* Search container styles */
+.search-container {
+  position: relative;
+}
+
+.search-input {
+  width: 300px;
+  border-radius: 20px !important;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  padding-left: 12px;
+  height: 40px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.search-input:hover,
+.search-input:focus {
+  border-color: #a5b4fc;
+  background-color: white;
+}
+
+.search-input .ant-input {
+  background-color: transparent;
+}
+
+/* View toggle container */
+.view-toggle-container {
+  display: flex;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.toggle-button {
+  border: none;
+  border-radius: 0 !important;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+.toggle-button:first-child {
+  border-right: 1px solid #e5e7eb;
+}
+
+.toggle-button.active-toggle {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.toggle-button:hover:not(.active-toggle) {
+  background-color: #f3f4f6;
+}
+
+/* Popconfirm custom styles */
+.custom-popconfirm .ant-popover-inner {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.custom-popconfirm .ant-popover-arrow {
+  display: none;
+}
+
+.custom-popconfirm .ant-popover-inner-content {
+  padding: 16px;
+}
+
+.custom-popconfirm .ant-popover-message {
+  padding: 0;
+  margin-bottom: 12px;
+}
+
+.custom-popconfirm .ant-popover-message > .anticon {
+  display: inline-flex !important;
+  color: transparent !important;
+  width: 24px;
+  height: 24px;
+}
+
+.custom-popconfirm .ant-popover-message > .anticon .warning-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.custom-popconfirm .ant-popover-message-title {
+  padding-left: 32px;
+  margin-left: 0;
+}
+
+.custom-popconfirm .ant-popover-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Fixed yellow warning circle */
+.custom-popconfirm .warning-icon {
+  width: 24px;
+  height: 24px;
+  background-color: #faad14;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  color: white;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+.custom-popconfirm .task-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 32px;
+}
+
+.custom-popconfirm .task-title {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.custom-popconfirm .task-description {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* Button styles */
+.custom-popconfirm .ant-btn-primary {
+  background-color: #1890ff;
+  border-color: #1890ff;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+}
+
+.custom-popconfirm .ant-btn-default {
+  border-color: #d9d9d9;
+  background: white;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-button {
+  color: #ff4d4f;
+  border-color: #ff4d4f;
+  background: white;
+  font-size: 14px;
+  height: 32px;
+  padding: 4px 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+}
+
+.delete-button:hover {
+  color: white;
+  background: #ff4d4f;
+  border-color: #ff4d4f;
+}
+
+/* Delete icon button */
+.delete-icon-button {
+  color: #ff4d4f !important;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  height: auto;
+}
+
+.delete-icon-button:hover {
+  color: #ff7875;
+  background: transparent;
+}
+
+.delete-icon-button .anticon {
+  font-size: 18px;
+}
+
+/* Global placeholder styles */
+::placeholder {
+  color: #4b5563 !important;
+  opacity: 1 !important;
+}
+
+.ant-input::placeholder {
+  color: #4b5563 !important;
+  opacity: 1 !important;
+}
+
+.ant-select-selection-placeholder {
+  color: #4b5563 !important;
+  opacity: 1 !important;
+}
+
+/* Dark theme styles */
+.dark-theme {
+  background-color: #121212 !important;
+  color: #e4e6eb !important;
+}
+
+.dark-theme .ant-layout {
+  background-color: #121212 !important;
+}
+
+.dark-theme .ant-layout-header {
+  background-color: #1f1f1f !important;
+}
+
+.dark-theme .ant-layout-content {
+  background-color: #121212 !important;
+}
+
+.dark-theme .ant-table {
+  background-color: #1f1f1f !important;
+  color: #e4e6eb !important;
+}
+
+.dark-theme .ant-table-thead > tr > th {
+  background-color: #2d2d2d !important;
+  color: #e4e6eb !important;
+  border-bottom: 1px solid #303030 !important;
+}
+
+.dark-theme .ant-table-tbody > tr > td {
+  border-bottom: 1px solid #303030 !important;
+  color: #e4e6eb !important;
+}
+
+.dark-theme .ant-table-tbody > tr:hover > td {
+  background-color: #2d2d2d !important;
+}
+
+.dark-theme .ant-btn:not(.ant-btn-primary) {
+  background-color: #2d2d2d !important;
+  border-color: #3a3a3a !important;
+  color: #e4e6eb !important;
+}
+
+.dark-theme .ant-drawer-content {
+  background-color: #1f1f1f !important;
+  color: #e4e6eb !important;
+}
+
+.dark-theme .ant-drawer-header {
+  background-color: #1f1f1f !important;
+  border-bottom: 1px solid #303030 !important;
+}
+
+.dark-theme .ant-drawer-title {
+  color: #e4e6eb !important;
+}
+
+.dark-theme .ant-form-item-label > label {
+  color: #e4e6eb !important;
+}
+
+.dark-theme .ant-input {
+  background-color: #2d2d2d !important;
+  border-color: #3a3a3a !important;
+  color: #e4e6eb !important;
+}
+
+.dark-theme .ant-select-selector {
+  background-color: #2d2d2d !important;
+  border-color: #3a3a3a !important;
+  color: #e4e6eb !important;
+}
+
+.dark-theme .ant-modal-content {
+  background-color: #1f1f1f !important;
+  color: #e4e6eb !important;
+}
+
+.dark-theme .ant-modal-header {
+  background-color: #1f1f1f !important;
+  border-bottom: 1px solid #303030 !important;
+}
+
+.dark-theme .ant-modal-title {
+  color: #e4e6eb !important;
+}
+
+.dark-theme .ant-alert {
+  background-color: #2d2d2d !important;
+  border-color: #3a3a3a !important;
+}
+
+.dark-theme .ant-alert-message {
+  color: #e4e6eb !important;
+}
+
+.dark-theme .ant-pagination-item a {
+  color: #e4e6eb !important;
+}
+
+.dark-theme .ant-pagination-item-active {
+  background-color: #177ddc !important;
+  border-color: #177ddc !important;
+}
+
+.dark-theme .ant-pagination-item-active a {
+  color: #fff !important;
+}
+
+/* Table styles */
+.ant-table {
+  background: white !important;
+  color: black !important;
+}
+
+.ant-table-thead > tr > th {
+  background: white !important;
+  color: black !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+  font-weight: bold !important;
+  padding: 16px 8px !important;
+}
+
+.ant-table-container {
+  background: white !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+.ant-table-content {
+  background: white !important;
+}
+
+/* Styling for each row */
+.ant-table-tbody > tr {
+  background: white !important;
+}
+
+.ant-table-tbody > tr > td {
+  background: white !important;
+  color: black !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+  padding: 12px 8px !important;
+}
+
+.ant-table-tbody > tr:hover > td {
+  background: #f5f5f5 !important;
+}
+
+.ant-table-row {
+  background: white !important;
+}
+
+/* Table styles for dark mode */
+.dark-theme .ant-table,
+.dark-theme .ant-table-thead > tr > th,
+.dark-theme .ant-table-tbody > tr > td,
+.dark-theme .ant-table-row {
+  color: black !important;
+  background: white !important;
+}
+
+.dark-theme .ant-table-tbody > tr:hover > td {
+  background: #f5f5f5 !important;
+}
+
+/* Fix column headers */
+.ant-table-column-title {
+  color: black !important;
+  font-weight: bold !important;
+}
+
+/* Fix Pagination */
+.ant-pagination-item a {
+  color: black !important;
+}
+
+.ant-pagination-item-active {
+  border-color: #1890ff !important;
+}
+
+.ant-pagination-item-active a {
+  color: #1890ff !important;
+}
+
+.ant-select-selection-item {
+  color: black !important;
+}
+
+/* Fix drawer */
+.ant-drawer-header {
+  background: white !important;
+  color: black !important;
+}
+
+.ant-drawer-title {
+  color: black !important;
+}
+
+.ant-drawer-body {
+  background: white !important;
+  color: black !important;
+}
+
+.ant-form-item-label > label {
+  color: black !important;
+}
+
+/* Fix modal */
+.ant-modal-header {
+  background: white !important;
+}
+
+.ant-modal-title {
+  color: black !important;
+}
+
+.ant-modal-content {
+  background: white !important;
+}
+
+.ant-modal-body {
+  background: white !important;
+  color: black !important;
+}
+
+.ant-modal-footer {
+  background: white !important;
+}
+
+/* Fix Popconfirm */
+.ant-popover-inner {
+  background: white !important;
+}
+
+.ant-popover-title {
+  color: black !important;
+}
+
+.ant-popover-inner-content {
+  color: black !important;
+}
+
+/* Fix popover arrow */
+.ant-popover-arrow-content {
+  background: white !important;
+}
+
+/* Fix select dropdown */
+.ant-select-dropdown {
+  background: white !important;
+}
+
+.ant-select-item-option-content {
+  color: black !important;
+}
+
+.ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+  background-color: #f5f5f5 !important;
+}
+
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  background-color: #e6f7ff !important;
+}
+
+/* Fix Switch */
+.ant-switch-checked {
+  background-color: #1890ff !important;
+}
+
+/* Fix Button */
+.ant-btn {
+  color: rgba(0, 0, 0, 0.85) !important;
+}
+
+.ant-btn-primary {
+  color: white !important;
+  background: #1890ff !important;
+  border-color: #1890ff !important;
+}
+
+.ant-btn-dangerous {
+  color: #ff4d4f !important;
+  border-color: #ff4d4f !important;
+}
+
+/* Ensure tooltip text is visible */
+.ant-tooltip-inner {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.85) !important;
+}
+
+/* Fix Card in dark mode */
+.dark-theme .ant-card {
+  background: white !important;
+  color: black !important;
+  border: 1px solid #f0f0f0 !important;
+}
+
+.dark-theme .ant-card-body {
+  background: white !important;
+  color: black !important;
+}
+
+.dark-theme .ant-card-meta-title,
+.dark-theme .ant-card-meta-description {
+  color: black !important;
+}
+
+/* Override styles for dark mode cards */
+.dark-mode-card.ant-card {
+  background-color: #000000 !important;
+  color: white !important;
+  border-color: white !important;
+}
+
+.dark-mode-card .ant-card-body {
+  background-color: #000000 !important;
+  color: white !important;
+}
+
+.dark-mode-card .ant-card-meta-title,
+.dark-mode-card .ant-card-meta-description {
+  color: white !important;
+}
+
+/* Make grid cards white */
+.ant-card {
+  background: white !important;
+  color: black !important;
+}
+
+.ant-card-body {
+  background: white !important;
+  color: black !important;
+}
+
+.ant-card-meta-title,
+.ant-card-meta-description {
+  color: black !important;
+}
+
+/* Make all text in cards black */
+.ant-card * {
+  color: black !important;
+}
+
+/* Specific exceptions */
+.ant-card .ant-tag,
+.ant-card .ant-btn-primary,
+.ant-card .ant-btn-dangerous {
+  color: inherit !important;
+}
+
+/* Fix email and company text */
+.ant-card .text-gray-800,
+.ant-card .text-gray-900 {
+  color: #1f2937 !important;
+}
+
+/* Make pagination work in dark mode */
+.dark-theme .ant-pagination-item {
+  background: white !important;
+}
+
+.dark-theme .ant-pagination-prev button,
+.dark-theme .ant-pagination-next button {
+  background: white !important;
+  color: #1f2937 !important;
+}
+
+/* Fix Button styles in card for dark mode */
+.ant-card .ant-btn-primary:not(.ant-btn-dangerous) {
+  background-color: #1890ff !important;
+  border-color: #1890ff !important;
+  color: white !important;
+}
+
+.ant-card .ant-btn-primary.ant-btn-dangerous {
+  background-color: #ff4d4f !important;
+  border-color: #ff4d4f !important;
+  color: white !important;
+}
+
+/* Fix hover effects */
+.ant-card .ant-btn-primary:not(.ant-btn-dangerous):hover {
+  background-color: #40a9ff !important;
+  border-color: #40a9ff !important;
+}
+
+.ant-card .ant-btn-primary.ant-btn-dangerous:hover {
+  background-color: #ff7875 !important;
+  border-color: #ff7875 !important;
+}
+
+/* Make button text white in dark mode */
+.dark-theme .ant-btn-primary {
+  color: white !important;
+}
+
+/* Make sure icons are white on primary buttons */
+.ant-btn-primary .anticon {
+  color: white !important;
+}
+
+/* Dark mode styles for Drawer */
+.dark-drawer .ant-drawer-header {
+  background-color: #1f1f1f !important;
+  border-bottom: 1px solid #333 !important;
+}
+
+.dark-drawer .ant-drawer-title {
+  color: white !important;
+}
+
+.dark-drawer .ant-drawer-body {
+  background-color: #1f1f1f !important;
+  color: white !important;
+}
+
+.dark-drawer .ant-drawer-content {
+  background-color: #1f1f1f !important;
+}
+
+.dark-drawer .ant-drawer-wrapper-body {
+  background-color: #1f1f1f !important;
+}
+
+.dark-drawer .ant-drawer-close {
+  color: white !important;
+}
+
+.dark-drawer .ant-drawer-footer {
+  background-color: #1f1f1f !important;
+  border-top: 1px solid #333 !important;
+}
+
+/* Dark mode styles for Select dropdown */
+.ant-select-dropdown.dark-select-dropdown {
+  background-color: #1f1f1f !important;
+}
+
+.ant-select-dropdown.dark-select-dropdown .ant-select-item {
+  color: white !important;
+}
+
+.ant-select-dropdown.dark-select-dropdown .ant-select-item-option-selected {
+  background-color: #2f2f2f !important;
+}
+
+.ant-select-dropdown.dark-select-dropdown .ant-select-item-option-active {
+  background-color: #3f3f3f !important;
+}
+
+/* Dark mode styles for Modal */
+.dark-modal .ant-modal-content {
+  background-color: #1f1f1f !important;
+}
+
+.dark-modal .ant-modal-header {
+  background-color: #1f1f1f !important;
+  border-bottom: 1px solid #333 !important;
+}
+
+.dark-modal .ant-modal-title {
+  color: white !important;
+}
+
+.dark-modal .ant-modal-body {
+  background-color: #1f1f1f !important;
+  color: white !important;
+}
+
+.dark-modal .ant-modal-footer {
+  background-color: #1f1f1f !important;
+  border-top: 1px solid #333 !important;
+}
+
+.dark-modal .ant-modal-close {
+  color: white !important;
+}
+
+/* Dark mode styles for Table */
+.dark-table .ant-table {
+  background-color: #1f1f1f !important;
+  color: white !important;
+}
+
+.dark-table .ant-table-thead > tr > th {
+  background-color: #2f2f2f !important;
+  color: white !important;
+  border-bottom: 1px solid #333 !important;
+}
+
+.dark-table .ant-table-tbody > tr > td {
+  background-color: #1f1f1f !important;
+  color: white !important;
+  border-bottom: 1px solid #333 !important;
+}
+
+.dark-table .ant-table-tbody > tr:hover > td {
+  background-color: #2f2f2f !important;
+}
+
+.dark-table .ant-pagination-item {
+  background-color: #1f1f1f !important;
+  border-color: #333 !important;
+}
+
+.dark-table .ant-pagination-item a {
+  color: white !important;
+}
+
+.dark-table .ant-pagination-item-active {
+  background-color: #1890ff !important;
+  border-color: #1890ff !important;
+}
+
+.dark-table .ant-pagination-item-active a {
+  color: white !important;
+}
+
+.dark-table .ant-pagination-prev .ant-pagination-item-link,
+.dark-table .ant-pagination-next .ant-pagination-item-link {
+  background-color: #1f1f1f !important;
+  color: white !important;
+  border-color: #333 !important;
+}
+
+/* Force white background for Add New Contact modal */
+.light-modal .ant-modal-content,
+.light-modal .ant-modal-header,
+.light-modal .ant-modal-body,
+.light-modal .ant-modal-footer {
+  background-color: white !important;
+  color: black !important;
+}
+
+.light-modal .ant-modal-title,
+.light-modal .ant-modal-close {
+  color: black !important;
+}
+
+.light-modal .ant-modal-header {
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+
+.light-modal .ant-modal-footer {
+  border-top: 1px solid #f0f0f0 !important;
+}
+
+.light-modal .ant-form-item-label > label {
+  color: black !important;
+}
+
+.light-modal .ant-input,
+.light-modal .ant-select-selector {
+  background-color: white !important;
+  color: black !important;
+  border-color: #d9d9d9 !important;
+}
+
+/* Cải thiện hiển thị số trang */
+.pagination-enhanced .ant-pagination-item {
+  font-weight: bold !important;
+  font-size: 16px !important;
+  min-width: 36px !important;
+  height: 36px !important;
+  line-height: 34px !important;
+  border-width: 2px !important;
+  border-radius: 6px !important;
+  margin: 0 6px !important;
+}
+
+.pagination-enhanced .ant-pagination-item-active {
+  background-color: #1890ff !important;
+  border-color: #1890ff !important;
+}
+
+.pagination-enhanced .ant-pagination-item-active a {
+  color: white !important;
+}
+
+/* Cải thiện nút prev/next */
+.pagination-enhanced .ant-pagination-prev,
+.pagination-enhanced .ant-pagination-next {
+  min-width: 36px !important;
+  height: 36px !important;
+  line-height: 36px !important;
+}
+
+.pagination-enhanced .ant-pagination-prev button,
+.pagination-enhanced .ant-pagination-next button {
+  font-size: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Cải thiện cho dark mode */
+.dark-theme .pagination-enhanced .ant-pagination-item {
+  background-color: #2f2f2f !important;
+  border-color: #3f3f3f !important;
+}
+
+.dark-theme .pagination-enhanced .ant-pagination-item-active {
+  background-color: #177ddc !important;
+  border-color: #177ddc !important;
+}
+
+.dark-theme .pagination-enhanced .ant-pagination-prev button,
+.dark-theme .pagination-enhanced .ant-pagination-next button {
+  color: #d9d9d9 !important;
+}
+
+.dark-theme
+  .pagination-enhanced
+  .ant-pagination-jump-prev
+  .ant-pagination-item-container
+  .ant-pagination-item-ellipsis,
+.dark-theme
+  .pagination-enhanced
+  .ant-pagination-jump-next
+  .ant-pagination-item-container
+  .ant-pagination-item-ellipsis {
+  color: #a6a6a6 !important;
+}
+
+/* Làm đậm 2 nút điều hướng bên trái */
+.pagination-enhanced .ant-pagination-prev button,
+.pagination-enhanced .ant-pagination-jump-prev button {
+  font-weight: bold !important;
+  border-width: 2px !important;
+  background-color: #f0f0f0 !important;
+  border-color: #d9d9d9 !important;
+}
+
+.pagination-enhanced .ant-pagination-prev:hover button,
+.pagination-enhanced .ant-pagination-jump-prev:hover button {
+  background-color: #e6e6e6 !important;
+  border-color: #c0c0c0 !important;
+}
+
+/* Làm đậm 2 nút điều hướng bên trái trong dark mode */
+.dark-theme .pagination-enhanced .ant-pagination-prev button,
+.dark-theme .pagination-enhanced .ant-pagination-jump-prev button {
+  background-color: #3f3f3f !important;
+  border-color: #4f4f4f !important;
+  color: #e0e0e0 !important;
+  font-weight: bold !important;
+}
+
+.dark-theme .pagination-enhanced .ant-pagination-prev:hover button,
+.dark-theme .pagination-enhanced .ant-pagination-jump-prev:hover button {
+  background-color: #505050 !important;
+  border-color: #606060 !important;
+}
+
+/* Làm đậm 2 nút điều hướng bên phải */
+.pagination-enhanced .ant-pagination-next button,
+.pagination-enhanced .ant-pagination-jump-next button {
+  font-weight: bold !important;
+  border-width: 2px !important;
+  background-color: #f0f0f0 !important;
+  border-color: #d9d9d9 !important;
+}
+
+.pagination-enhanced .ant-pagination-next:hover button,
+.pagination-enhanced .ant-pagination-jump-next:hover button {
+  background-color: #e6e6e6 !important;
+  border-color: #c0c0c0 !important;
+}
+
+/* Làm đậm 2 nút điều hướng bên phải trong dark mode */
+.dark-theme .pagination-enhanced .ant-pagination-next button,
+.dark-theme .pagination-enhanced .ant-pagination-jump-next button {
+  background-color: #3f3f3f !important;
+  border-color: #4f4f4f !important;
+  color: #e0e0e0 !important;
+  font-weight: bold !important;
+}
+
+.dark-theme .pagination-enhanced .ant-pagination-next:hover button,
+.dark-theme .pagination-enhanced .ant-pagination-jump-next:hover button {
+  background-color: #505050 !important;
+  border-color: #606060 !important;
+}
+
+/* Light sidebar styles */
+.light-sidebar {
+  background-color: #fff !important;
+  color: rgba(0, 0, 0, 0.85) !important;
+}
+
+.light-sidebar .ant-menu-light {
+  background-color: #fff !important;
+  color: rgba(0, 0, 0, 0.85) !important;
+}
+
+.light-sidebar .ant-layout-sider-trigger {
+  background-color: #f0f2f5 !important;
+  color: rgba(0, 0, 0, 0.85) !important;
+  border-right: 1px solid #f0f0f0 !important;
+}
+
+.light-sidebar .ant-menu-item-selected {
+  background-color: #e6f7ff !important;
+  color: #1890ff !important;
+}
+
+.light-sidebar .ant-menu-item:hover {
+  color: #1890ff !important;
+}
+
+.light-sidebar .ant-menu-item-selected .anticon {
+  color: #1890ff !important;
+}
+
+.light-sidebar .ant-menu-item .anticon {
+  color: rgba(0, 0, 0, 0.65) !important;
+}
+
+.light-sidebar .ant-menu-item:hover .anticon {
+  color: #1890ff !important;
+}
